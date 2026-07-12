@@ -100,11 +100,10 @@ body{font-family:'IBM Plex Sans Arabic',system-ui,sans-serif;background:var(--bg
   <div class="langbar">
     <span class="lbl">🌐 اللغة اللي كتعدّل:</span>
     <div class="lang-seg" id="langSeg">
-      <button data-l="en" class="active" onclick="switchLang('en')">EN</button>
-      <button data-l="ar" onclick="switchLang('ar')">AR</button>
+      <button data-l="ar" class="active" onclick="switchLang('ar')">AR</button>
       <button data-l="darija" onclick="switchLang('darija')">DAR</button>
     </div>
-    <span class="cur">كتعدّل دبا: <b id="curLangName">الإنجليزية</b></span>
+    <span class="cur">كتعدّل دبا: <b id="curLangName">العربية</b></span>
   </div>
 
   <!-- النشر المباشر -->
@@ -170,9 +169,9 @@ body{font-family:'IBM Plex Sans Arabic',system-ui,sans-serif;background:var(--bg
   <!-- القائمة (حسب اللغة) -->
   <div class="card">
     <h2><span class="n">5</span> قائمة التنقّل (Nav) <span class="badge-lang">🔤 حسب اللغة</span></h2>
-    <div class="field"><label>الرئيسية</label><input id="nav_home" dir="auto"></div>
-    <div class="field"><label>الأعمال</label><input id="nav_reels" dir="auto"></div>
-    <div class="field"><label>تواصل</label><input id="nav_contact" dir="auto"></div>
+    <div class="field"><label>الأعمال</label><input id="nav_work" dir="auto"></div>
+    <div class="field"><label>المراحل</label><input id="nav_process" dir="auto"></div>
+    <div class="field"><label>الشروط</label><input id="nav_guidelines" dir="auto"></div>
   </div>
 
   <!-- الختام (حسب اللغة) -->
@@ -207,7 +206,7 @@ const $ = id => document.getElementById(id);
 
 /* ===== النظام متعدّد اللغات ===== */
 const LNAME = { en:'الإنجليزية', ar:'العربية', darija:'الدارجة' };
-let curLang = 'en';
+let curLang = 'ar';
 
 /* الحقول المرتبطة باللغة: id الحقل -> المسار داخل كائن اللغة */
 const LANG_FIELDS = {
@@ -216,7 +215,7 @@ const LANG_FIELDS = {
   workLabel:'workLabel', workTitle:'workTitle',
   proc_label:'process.label', proc_title:'process.title', proc_sub:'process.subtitle',
   guide_label:'guidelines.label', guide_title:'guidelines.title', guide_sub:'guidelines.subtitle',
-  nav_home:'nav.home', nav_reels:'nav.reels', nav_contact:'nav.contact',
+  nav_work:'nav.work', nav_process:'nav.process', nav_guidelines:'nav.guidelines',
   c_plain:'closing.titlePlain', c_accent:'closing.titleAccent', c_line1:'closing.line1', c_line2:'closing.line2'
 };
 
@@ -319,7 +318,7 @@ function saveShared(){
 }
 
 loadShared();
-loadLang('en');
+loadLang('ar');
 
 /* الريلز */
 const reelsEl = $('reels');

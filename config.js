@@ -63,14 +63,14 @@ window.SITE_CONFIG = {
     ]
   },
 
-  /* روابط القائمة (الإنجليزية) */
-  nav: { home: "Home", reels: "Reels", contact: "Contact" },
+  /* روابط القائمة (الإنجليزية) — الأعمال / المراحل / الشروط */
+  nav: { work: "Work", process: "Process", guidelines: "Guidelines" },
 
   /* ===== الترجمات ===== */
   i18n: {
     ar: {
       bookACallText: "احجز مكالمة",
-      nav: { home: "الرئيسية", reels: "الأعمال", contact: "تواصل" },
+      nav: { work: "الأعمال", process: "المراحل", guidelines: "الشروط" },
       hero: {
         line1: "اجعل محتواك يبدو",
         line2: "بمستوى",
@@ -108,7 +108,7 @@ window.SITE_CONFIG = {
     },
     darija: {
       bookACallText: "7jez Mokalma",
-      nav: { home: "Lbdaya", reels: "Reels", contact: "Twasl" },
+      nav: { work: "Lkhedma", process: "Process", guidelines: "Shorot" },
       hero: {
         line1: "Khelli Content Dyalek Yban",
         line2: "B Niveau Dyal",

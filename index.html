@@ -141,6 +141,9 @@ body.rtl .btn{font-family:'IBM Plex Sans Arabic',sans-serif;font-style:normal;fo
 .guide-num{display:inline-flex;align-items:center;justify-content:center;width:82px;height:82px;border-radius:22px;
   background:linear-gradient(180deg,#fceaea,#f8dede);color:#d06a6a;
   font-family:var(--sans);font-weight:800;font-size:34px;margin-bottom:30px}
+/* eyebrow قسم معايير العمل بالأحمر */
+#guidelines .label .l{background:#d06a6a}
+#guidelines .label #guideLabel{color:#d06a6a}
 .proc-card h3{font-family:var(--sans);font-weight:700;font-size:25px;margin-bottom:15px}
 .proc-card p{color:var(--soft);font-weight:400;font-size:17.5px;line-height:1.7}
 @media(max-width:820px){.proc-grid{grid-template-columns:1fr;gap:20px;max-width:560px;margin:0 auto}.proc-card{min-height:0}}
@@ -193,14 +196,13 @@ footer b{color:var(--ink);font-weight:700}
 
 <nav class="navbar">
   <div class="lang-seg" id="langSeg">
-    <button data-lang="en">EN</button>
     <button data-lang="ar">AR</button>
     <button data-lang="darija">DAR</button>
   </div>
   <div class="nav-links">
-    <a href="#home" id="nl-home"></a>
-    <a href="#work" id="nl-reels"></a>
-    <a href="#contact" id="nl-contact"></a>
+    <a href="#work" id="nl-work"></a>
+    <a href="#process" id="nl-process"></a>
+    <a href="#guidelines" id="nl-guidelines"></a>
   </div>
   <a class="btn sm" id="navCta" href="#"><span id="navCtaText"></span></a>
 </nav>
@@ -320,7 +322,7 @@ function pack(lang){
   return {
     hero: Object.assign({}, C.hero, t.hero||{}),
     closing: Object.assign({}, C.closing, t.closing||{}),
-    nav: Object.assign({home:'Home',reels:'Reels',contact:'Contact'}, C.nav||{}, t.nav||{}),
+    nav: Object.assign({work:'Work',process:'Process',guidelines:'Guidelines'}, C.nav||{}, t.nav||{}),
     workLabel: t.workLabel || C.workLabel,
     workTitle: t.workTitle || C.workTitle,
     btn: t.bookACallText || C.bookACallText || 'Apply Now'
@@ -372,9 +374,9 @@ function applyLang(lang){
       gg.appendChild(c);
     });
   }
-  document.getElementById('nl-home').textContent = M.nav.home;
-  document.getElementById('nl-reels').textContent = M.nav.reels;
-  document.getElementById('nl-contact').textContent = M.nav.contact;
+  document.getElementById('nl-work').textContent = M.nav.work;
+  document.getElementById('nl-process').textContent = M.nav.process;
+  document.getElementById('nl-guidelines').textContent = M.nav.guidelines;
   ['heroCtaText','finalCtaText','navCtaText'].forEach(id=> document.getElementById(id).textContent = M.btn);
   document.querySelectorAll('#langSeg button').forEach(b=> b.classList.toggle('active', b.dataset.lang===lang));
   const rtl = (lang === 'ar');            /* الدارجة لاتينية = LTR */
@@ -383,8 +385,8 @@ function applyLang(lang){
   document.body.classList.toggle('rtl', rtl);
   try{ localStorage.setItem('lang', lang); }catch(e){}
 }
-let lang = 'en';
-try{ const s = localStorage.getItem('lang'); if(s && LANGS.includes(s)) lang = s; }catch(e){}
+let lang = 'ar';   /* الإنجليزية أُزيلت من الواجهة — الافتراضي عربي */
+try{ const s = localStorage.getItem('lang'); if(s==='ar' || s==='darija') lang = s; }catch(e){}
 applyLang(lang);
 document.querySelectorAll('#langSeg button').forEach(b=>{
   b.addEventListener('click', ()=> applyLang(b.dataset.lang));
