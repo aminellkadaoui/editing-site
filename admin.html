@@ -17,8 +17,21 @@ body{font-family:'IBM Plex Sans Arabic',system-ui,sans-serif;background:var(--bg
 .bar button{font-family:inherit;font-weight:600;font-size:14px;border:0;border-radius:10px;padding:10px 18px;cursor:pointer;transition:.2s}
 .b-prev{background:#eef2ff;color:var(--blue)}
 .b-prev:hover{background:#e0e7ff}
-.b-exp{background:var(--blue);color:#fff}
-.b-exp:hover{filter:brightness(1.08)}
+.b-exp{background:#eef2ff;color:var(--blue)}
+.b-exp:hover{background:#e0e7ff}
+.b-pub{background:var(--blue);color:#fff}
+.b-pub:hover{filter:brightness(1.08)}
+.b-pub[disabled]{opacity:.6;cursor:progress}
+.gh-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.gh-grid .field.full{grid-column:1/-1}
+.gh-save{margin-top:4px;font-family:inherit;font-weight:600;font-size:13.5px;border:0;border-radius:10px;
+  padding:9px 16px;cursor:pointer;background:#eef2ff;color:var(--blue)}
+.gh-save:hover{background:#e0e7ff}
+.gh-state{font-size:12.5px;font-weight:600;margin-right:10px}
+.gh-state.on{color:var(--green)} .gh-state.off{color:var(--muted)}
+.warn{background:#eef6ff;border:1px solid #cfe0ff;border-radius:10px;padding:11px 14px;font-size:12.5px;color:#274b7a;margin-top:12px;line-height:1.6}
+.warn code{background:#dbe8ff;padding:1px 6px;border-radius:5px;font-family:'IBM Plex Mono',monospace}
+@media(max-width:560px){.gh-grid{grid-template-columns:1fr}}
 .wrap{max-width:920px;margin:0 auto;padding:26px 20px 80px}
 .note{background:#fff8e6;border:1px solid #f6e6b0;border-radius:12px;padding:14px 18px;font-size:14px;margin-bottom:22px;color:#7a5b00}
 .note b{color:#5c4400}
@@ -61,12 +74,30 @@ body{font-family:'IBM Plex Sans Arabic',system-ui,sans-serif;background:var(--bg
   <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--muted)">Amine Editing Team</span>
   <span class="sp"></span>
   <button class="b-prev" onclick="preview()">👁 معاينة</button>
-  <button class="b-exp" onclick="exportConfig()">⬇ تصدير config.js</button>
+  <button class="b-exp" onclick="exportConfig()">⬇ تصدير</button>
+  <button class="b-pub" id="btnPub" onclick="publish()">🚀 نشر مباشرة</button>
 </div>
 
 <div class="wrap">
   <div class="note">
-    ✏️ عدّل أي حقل هنا. <b>«معاينة»</b> تفتح الموقع بتعديلاتك مباشرة. <b>«تصدير config.js»</b> يحمّل الملف — استبدل به <code>config.js</code> في مجلد الموقع (أو ارفعه على GitHub) لتصبح التعديلات نهائية للزوّار.
+    ✏️ عدّل أي حقل هنا. <b>«معاينة»</b> تفتح الموقع بتعديلاتك. <b>«🚀 نشر مباشرة»</b> يرفع التعديلات فوراً على موقعك المنشور (GitHub Pages) — يتحدّث خلال دقيقة تقريباً، بدون أي تصدير أو رفع يدوي. اضبط الاتصال مرّة واحدة في الأسفل. 👇
+  </div>
+
+  <!-- النشر المباشر -->
+  <div class="card">
+    <h2><span class="n">0</span> النشر المباشر (GitHub) <span class="gh-state off" id="ghState">غير مضبوط</span></h2>
+    <div class="gh-grid">
+      <div class="field"><label>اسم مستخدم GitHub</label><input id="gh_owner" dir="ltr" placeholder="aminellkadaoui"></div>
+      <div class="field"><label>اسم الريبو (Repository)</label><input id="gh_repo" dir="ltr" placeholder="amine-editing-site"></div>
+      <div class="field"><label>الفرع (Branch)</label><input id="gh_branch" dir="ltr" placeholder="main" value="main"></div>
+      <div class="field"><label>مسار الملف</label><input id="gh_path" dir="ltr" placeholder="config.js" value="config.js"></div>
+      <div class="field full"><label>التوكن (Access Token) <span class="hint">(يُحفظ في متصفحك فقط)</span></label><input id="gh_token" type="password" dir="ltr" placeholder="github_pat_..."></div>
+    </div>
+    <button class="gh-save" onclick="saveGH()">💾 حفظ إعدادات الاتصال</button>
+    <div class="warn">
+      🔐 <b>التوكن آمن:</b> يُخزَّن في متصفحك فقط (localStorage) ولا يُرفع أبداً مع صفحات الموقع.<br>
+      اصنعه من: <code>GitHub → Settings → Developer settings → Fine-grained tokens</code> — حدّده على هذا الريبو فقط، والصلاحية: <code>Contents → Read and write</code> فقط.
+    </div>
   </div>
 
   <!-- عام -->
@@ -192,13 +223,15 @@ function preview(){
   setTimeout(()=> window.open('index.html','_blank'), 400);
 }
 
-function exportConfig(){
-  const c = collect();
-  const body =
-'/* ============================================================\n'+
-'   لوحة التحكم في المحتوى — مُصدَّر من admin.html\n'+
+function configFileText(c){
+  return '/* ============================================================\n'+
+'   لوحة التحكم في المحتوى — مُدار من admin.html\n'+
 '   ============================================================ */\n'+
 'window.SITE_CONFIG = ' + JSON.stringify(c, null, 2) + ';\n';
+}
+
+function exportConfig(){
+  const body = configFileText(collect());
   const blob = new Blob([body], {type:'application/javascript'});
   const a = document.createElement('a');
   a.href = URL.createObjectURL(blob);
@@ -207,6 +240,83 @@ function exportConfig(){
   URL.revokeObjectURL(a.href);
   toast('نُزّل config.js — استبدل به الملف القديم');
 }
+
+/* ===== النشر المباشر عبر GitHub ===== */
+function getGH(){ try{ return JSON.parse(localStorage.getItem('GH_CFG'))||{}; }catch(e){ return {}; } }
+function fillGH(){
+  const g = getGH();
+  $('gh_owner').value = g.owner||'';
+  $('gh_repo').value  = g.repo||'';
+  $('gh_branch').value= g.branch||'main';
+  $('gh_path').value  = g.path||'config.js';
+  $('gh_token').value = g.token||'';
+  markGH();
+}
+function markGH(){
+  const g = getGH();
+  const ok = g.owner && g.repo && g.token;
+  const el = $('ghState');
+  el.textContent = ok ? ('متصل ✓ ('+g.owner+'/'+g.repo+')') : 'غير مضبوط';
+  el.className = 'gh-state ' + (ok?'on':'off');
+}
+function saveGH(){
+  const g = {
+    owner:  $('gh_owner').value.trim(),
+    repo:   $('gh_repo').value.trim(),
+    branch: $('gh_branch').value.trim() || 'main',
+    path:   $('gh_path').value.trim() || 'config.js',
+    token:  $('gh_token').value.trim()
+  };
+  localStorage.setItem('GH_CFG', JSON.stringify(g));
+  markGH();
+  toast('حُفظت إعدادات الاتصال');
+}
+function b64utf8(str){
+  const bytes = new TextEncoder().encode(str);
+  let bin=''; bytes.forEach(b=> bin += String.fromCharCode(b));
+  return btoa(bin);
+}
+async function publish(){
+  const g = getGH();
+  if(!g.owner || !g.repo || !g.token){ toast('اضبط إعدادات GitHub في القسم 0 أولاً'); $('gh_owner').focus(); return; }
+  const btn = $('btnPub'); btn.disabled = true; const label = btn.textContent; btn.textContent = '⏳ جارٍ النشر...';
+  const api = 'https://api.github.com/repos/'+g.owner+'/'+g.repo+'/contents/'+encodeURIComponent(g.path);
+  const headers = { 'Authorization':'Bearer '+g.token, 'Accept':'application/vnd.github+json', 'X-GitHub-Api-Version':'2022-11-28' };
+  try{
+    // 1) الحصول على SHA الحالي للملف (إن وُجد)
+    let sha;
+    const gr = await fetch(api+'?ref='+encodeURIComponent(g.branch), { headers });
+    if(gr.status === 200){ sha = (await gr.json()).sha; }
+    else if(gr.status === 401){ throw new Error('التوكن غير صالح (401) — تحقّق منه'); }
+    else if(gr.status === 404){ /* ملف جديد */ }
+    else if(gr.status !== 200){ /* نكمل، قد يكون جديداً */ }
+    // 2) رفع النسخة الجديدة (commit)
+    const put = await fetch(api, {
+      method:'PUT',
+      headers: Object.assign({}, headers, {'Content-Type':'application/json'}),
+      body: JSON.stringify({
+        message: 'تحديث المحتوى من لوحة التحكم',
+        content: b64utf8(configFileText(collect())),
+        branch:  g.branch,
+        sha: sha
+      })
+    });
+    if(!put.ok){
+      let m = 'فشل النشر ('+put.status+')';
+      try{ const e = await put.json(); if(e.message) m += ' — '+e.message; }catch(_){}
+      throw new Error(m);
+    }
+    // نحدّث المعاينة المحلية أيضاً
+    localStorage.setItem('SITE_CONFIG', JSON.stringify(collect()));
+    toast('✅ نُشر بنجاح! الموقع يتحدّث خلال ~دقيقة');
+  }catch(err){
+    alert('⚠️ ' + err.message);
+  }finally{
+    btn.disabled = false; btn.textContent = label;
+  }
+}
+
+fillGH();
 </script>
 </body>
 </html>
