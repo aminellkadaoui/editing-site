@@ -54,7 +54,7 @@ main{position:relative;z-index:1}
 body.rtl{font-family:'IBM Plex Sans Arabic',var(--sans)}
 body.rtl .hero h1,body.rtl .final h2{font-family:'IBM Plex Sans Arabic',sans-serif;text-transform:none;letter-spacing:0;line-height:1.35}
 body.rtl .hero h1 .s,body.rtl .final h2 .s{font-family:'IBM Plex Sans Arabic',sans-serif;font-style:normal;font-weight:700;font-size:1em}
-body.rtl .sub,body.rtl .final p,body.rtl .nav-links a,body.rtl .work h2,body.rtl .work .label span{font-family:'IBM Plex Sans Arabic',sans-serif}
+body.rtl .sub,body.rtl .final p,body.rtl .nav-links a,body.rtl .work h2,body.rtl .work .label span,body.rtl .proc-head h2,body.rtl .proc-head p,body.rtl .proc-card h3,body.rtl .proc-card p{font-family:'IBM Plex Sans Arabic',sans-serif}
 body.rtl .btn{font-family:'IBM Plex Sans Arabic',sans-serif;font-style:normal;font-weight:600;font-size:18px}
 
 /* ===== الزر ===== */
@@ -115,6 +115,22 @@ body.rtl .btn{font-family:'IBM Plex Sans Arabic',sans-serif;font-style:normal;fo
   box-shadow:0 10px 24px rgba(0,0,0,.28);pointer-events:none}
 .reel .views svg{width:23px;height:17px;flex-shrink:0}
 
+/* ===== OUR PROCESS ===== */
+.process{padding:96px 0 0;scroll-margin-top:120px}
+.proc-head{text-align:center;max-width:640px;margin:0 auto 48px}
+.proc-head h2{font-family:var(--sans);font-weight:700;font-size:clamp(26px,3.2vw,34px);letter-spacing:-.01em}
+.proc-head p{color:var(--soft);font-weight:400;font-size:clamp(15px,1.7vw,18px);margin-top:12px;line-height:1.6}
+.proc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.proc-card{background:#fff;border:1px solid #e8ecf3;border-radius:20px;padding:30px 26px;
+  transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease}
+.proc-card:hover{transform:translateY(-4px);border-color:rgba(15,107,255,.3);box-shadow:0 16px 34px rgba(15,107,255,.10)}
+.proc-num{display:inline-flex;align-items:center;justify-content:center;width:46px;height:46px;border-radius:14px;
+  background:linear-gradient(180deg,#e9f1ff,#dbe8ff);color:var(--btn);
+  font-family:var(--sans);font-weight:700;font-size:18px;margin-bottom:18px}
+.proc-card h3{font-family:var(--sans);font-weight:700;font-size:18px;margin-bottom:10px}
+.proc-card p{color:var(--soft);font-weight:400;font-size:14.5px;line-height:1.7}
+@media(max-width:820px){.proc-grid{grid-template-columns:1fr;gap:16px;max-width:520px;margin:0 auto}}
+
 /* ===== FINAL CTA ===== */
 .final{position:relative;text-align:center;padding:96px 20px 150px;overflow:hidden}
 .final::before{content:"";position:absolute;left:50%;bottom:-30%;transform:translateX(-50%);
@@ -172,6 +188,15 @@ footer b{color:var(--ink);font-weight:700}
       <h2 id="workTitle">My Best Work</h2>
     </div>
     <div class="grid" id="reelsGrid"></div>
+  </section>
+
+  <!-- OUR PROCESS -->
+  <section class="process wrap" id="process">
+    <div class="proc-head">
+      <h2 id="procTitle"></h2>
+      <p id="procSub"></p>
+    </div>
+    <div class="proc-grid" id="procGrid"></div>
   </section>
 
   <!-- FINAL CTA -->
@@ -251,6 +276,20 @@ function applyLang(lang){
     M.closing.titlePlain + ' <span class="s">' + M.closing.titleAccent + '</span>';
   document.getElementById('finalLine1').textContent = M.closing.line1;
   document.getElementById('finalLine2').textContent = M.closing.line2;
+  /* طريقة العمل */
+  const proc = (T(lang) && T(lang).process) ? T(lang).process : C.process;
+  if(proc){
+    document.getElementById('procTitle').textContent = proc.title;
+    document.getElementById('procSub').textContent = proc.subtitle;
+    const pg = document.getElementById('procGrid'); pg.innerHTML = '';
+    (proc.steps||[]).forEach((s,i)=>{
+      const c = document.createElement('div'); c.className = 'proc-card';
+      c.innerHTML = '<div class="proc-num">'+String(i+1).padStart(2,'0')+'</div><h3></h3><p></p>';
+      c.querySelector('h3').textContent = s.title;
+      c.querySelector('p').textContent = s.desc;
+      pg.appendChild(c);
+    });
+  }
   document.getElementById('nl-home').textContent = M.nav.home;
   document.getElementById('nl-reels').textContent = M.nav.reels;
   document.getElementById('nl-contact').textContent = M.nav.contact;

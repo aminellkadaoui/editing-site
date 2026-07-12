@@ -39,6 +39,17 @@ window.SITE_CONFIG = {
     line2: "The only question is: are you ready to take action? 👇"
   },
 
+  /* قسم طريقة العمل */
+  process: {
+    title: "Our Process",
+    subtitle: "A simple workflow built to understand your project, create your unique editing style, and improve your content over time.",
+    steps: [
+      { title: "Project Details", desc: "We receive the key details about your business, offer, audience, references, and brand direction." },
+      { title: "Unique Editing Style", desc: "We create a custom editing style built around your brand, expertise, and authority." },
+      { title: "Delivery & Analysis", desc: "We deliver ready-to-publish videos and review what performs best to improve the next content." }
+    ]
+  },
+
   /* روابط القائمة (الإنجليزية) */
   nav: { home: "Home", reels: "Reels", contact: "Contact" },
 
@@ -60,6 +71,15 @@ window.SITE_CONFIG = {
         titleAccent: "بعد؟",
         line1: "رأيت العمل. تعرف ما هو ممكن.",
         line2: "السؤال الوحيد: هل أنت مستعد للتحرّك؟ 👇"
+      },
+      process: {
+        title: "طريقة العمل",
+        subtitle: "نظام بسيط نفهم فيه مشروعك، نبني لك ستايل مونتاج خاص، ثم نحسّن المحتوى مع الوقت.",
+        steps: [
+          { title: "نستلم معلومات المشروع", desc: "نستلم منك أهم التفاصيل عن البيزنس، العرض، الجمهور، الريفرنس، واتجاه البراند." },
+          { title: "Unique Editing Style", desc: "نبني لك ستايل مونتاج خاص يعكس البراند، الخبرة، وطريقة ظهورك أمام الجمهور." },
+          { title: "التسليم والتحليل", desc: "نسلّم الفيديوهات جاهزة للنشر، ونراجع ما الذي يعمل بشكل أفضل لتحسين المحتوى القادم." }
+        ]
       }
     },
     darija: {
@@ -78,6 +98,15 @@ window.SITE_CONFIG = {
         titleAccent: "?",
         line1: "Chefti lkhedma. 3arf chno mumkin.",
         line2: "Bqa ghir so2al: wach rak msta3d ttharrek? 👇"
+      },
+      process: {
+        title: "Process Dyal l Khedma",
+        subtitle: "Workflow bsit kankhedmo bih bach nfehmo project dyalek, nbniw lik unique editing style, w ntawro content m3a lwe9t.",
+        steps: [
+          { title: "Kanstelmo Project Details", desc: "Kanstelmo mennek l infos l mohimma 3la business, offer, audience, references, w brand direction." },
+          { title: "Unique Editing Style", desc: "Kanbniw lik style dyal editing khass bik, kaybin brand dyalek, expertise, w authority." },
+          { title: "Delivery & Analysis", desc: "Kanselmo videos wajdin l nnachr, w kanchofo chno khdem mzyan bach ntawro content jay." }
+        ]
       }
     }
   }
