@@ -16,7 +16,8 @@ window.SITE_CONFIG = {
     line2: "Stop the Scroll &",
     line3: "Drive Results",
     subtitle: "Most editors make your videos look good. We make them perform. High-quality editing that builds your brand and gets people to act.",
-    videoId: "KI0m9SnMAEE"
+    tagline: "We're not just freelancers who edit videos — we're a team that works as your content partner.",
+    videoId: "Uxsu1WrvefQ"
   },
 
   workLabel: "Portfolio",
@@ -41,6 +42,7 @@ window.SITE_CONFIG = {
 
   /* قسم طريقة العمل */
   process: {
+    label: "Workflow",
     title: "Our Process",
     subtitle: "A simple workflow built to understand your project, create your unique editing style, and improve your content over time.",
     steps: [
@@ -62,7 +64,8 @@ window.SITE_CONFIG = {
         line1: "اجعل محتواك يبدو",
         line2: "",
         line3: "بمستوى خبرتك",
-        subtitle: "أغلب المونتيرين يجعلون فيديوهاتك تبدو جيدة. نحن نجعلها تحقق نتائج — مونتاج احترافي يبني علامتك ويدفع الناس للتفاعل."
+        subtitle: "أغلب المونتيرين يجعلون فيديوهاتك تبدو جيدة. نحن نجعلها تحقق نتائج — مونتاج احترافي يبني علامتك ويدفع الناس للتفاعل.",
+        tagline: "لسنا مجرد فريلانسرز ينفذون فيديوهات، نحن فريق يعمل كشريك محتوى."
       },
       workLabel: "أعمالي",
       workTitle: "أفضل أعمالي",
@@ -73,6 +76,7 @@ window.SITE_CONFIG = {
         line2: "السؤال الوحيد: هل أنت مستعد للتحرّك؟ 👇"
       },
       process: {
+        label: "المراحل",
         title: "طريقة العمل",
         subtitle: "نظام بسيط نفهم فيه مشروعك، نبني لك ستايل مونتاج خاص، ثم نحسّن المحتوى مع الوقت.",
         steps: [
@@ -89,7 +93,8 @@ window.SITE_CONFIG = {
         line1: "Khli lreels dyalk",
         line2: "Twqf scroll",
         line3: "w tjib results",
-        subtitle: "Bzaf dyal editors kaykheliw lvideos dyalk ybano mzyanin. 7na kankheliwha tjib results — editing professional kaybni lbrand dyalk w kaykheli nas ytharrko."
+        subtitle: "Bzaf dyal editors kaykheliw lvideos dyalk ybano mzyanin. 7na kankheliwha tjib results — editing professional kaybni lbrand dyalk w kaykheli nas ytharrko.",
+        tagline: "Ma7na-ch ghir freelancers li kaymontiw videos — 7na team kaykhdem b7al content partner dyalek."
       },
       workLabel: "Lkhedma dyali",
       workTitle: "A7san lkhedma dyali",
@@ -100,6 +105,7 @@ window.SITE_CONFIG = {
         line2: "Bqa ghir so2al: wach rak msta3d ttharrek? 👇"
       },
       process: {
+        label: "Workflow",
         title: "Process Dyal l Khedma",
         subtitle: "Workflow bsit kankhedmo bih bach nfehmo project dyalek, nbniw lik unique editing style, w ntawro content m3a lwe9t.",
         steps: [
