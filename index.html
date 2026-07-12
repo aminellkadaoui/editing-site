@@ -52,9 +52,9 @@ main{position:relative;z-index:1}
 
 /* ===== دعم العربية / الدارجة (RTL) ===== */
 body.rtl{font-family:'IBM Plex Sans Arabic',var(--sans)}
-body.rtl .hero h1{font-family:'IBM Plex Sans Arabic',sans-serif;text-transform:none;letter-spacing:-.03em;line-height:1.15;color:#101010;font-weight:600;font-size:clamp(29px,4.5vw,43px)}
-body.rtl .hero h1 .b{font-weight:600}
-body.rtl .hero h1 .s{display:inline-block;font-family:'IBM Plex Sans Arabic',sans-serif;font-style:normal;font-weight:600;font-size:1.42em;line-height:1.08;margin-top:.04em;
+body.rtl .hero h1{font-family:'IBM Plex Sans Arabic',sans-serif;text-transform:none;letter-spacing:-.03em;line-height:1.18;color:#101010;font-weight:500;font-size:clamp(27px,4.2vw,39px)}
+body.rtl .hero h1 .b{font-family:'IBM Plex Sans Arabic',sans-serif;font-weight:700;font-size:1.4em;color:#101010}
+body.rtl .hero h1 .s{display:inline-block;font-family:'IBM Plex Sans Arabic',sans-serif;font-style:normal;font-weight:700;font-size:1.4em;line-height:1.1;
   color:#0F6BFF;-webkit-text-fill-color:#0F6BFF;background:none;filter:none}
 body.rtl .final h2{font-family:'IBM Plex Sans Arabic',sans-serif;text-transform:none;letter-spacing:-.02em;line-height:1.3}
 body.rtl .final h2 .s{font-family:'IBM Plex Sans Arabic',sans-serif;font-style:normal;font-weight:700;font-size:1em}
@@ -277,8 +277,8 @@ function pack(lang){
 }
 function applyLang(lang){
   const M = pack(lang);
-  let hh = M.hero.line1;
-  if(M.hero.line2){ hh += ' <span class="b">' + M.hero.line2 + '</span>'; } else { hh += '<br>'; }
+  let hh = M.hero.line1 + '<br>';
+  if(M.hero.line2){ hh += '<span class="b">' + M.hero.line2 + '</span>'; }
   if(M.hero.line3){ hh += (M.hero.line2 ? ' ' : '') + '<span class="s">' + M.hero.line3 + '</span>'; }
   document.getElementById('heroTitle').innerHTML = hh;
   document.getElementById('heroSub').textContent = M.hero.subtitle;

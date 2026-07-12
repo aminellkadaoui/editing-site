@@ -12,10 +12,10 @@ window.SITE_CONFIG = {
 
   /* القسم العلوي (Hero) — الإنجليزية */
   hero: {
-    line1: "Make Your Reels",
-    line2: "Stop the Scroll &",
-    line3: "Drive Results",
-    subtitle: "We're not just freelancers who edit videos — we're a team that works as your content partner.",
+    line1: "Make Your Content Look",
+    line2: "As Strong As Your",
+    line3: "Expertise",
+    subtitle: "We're not just freelancers editing videos. We're a content partner for online coaches — turning your expertise into ready-to-publish videos that build trust, authority, and attract leads 24/7.",
     videoId: "Uxsu1WrvefQ"
   },
 
@@ -61,9 +61,9 @@ window.SITE_CONFIG = {
       nav: { home: "الرئيسية", reels: "الأعمال", contact: "تواصل" },
       hero: {
         line1: "اجعل محتواك يبدو",
-        line2: "",
-        line3: "بمستوى خبرتك",
-        subtitle: "لسنا مجرد فريلانسرز ينفذون فيديوهات، نحن فريق يعمل كشريك محتوى."
+        line2: "بمستوى",
+        line3: "خبرتك",
+        subtitle: "لسنا مجرد فريلانسرز ينفذون فيديوهات. نحن فريق يعمل كشريك محتوى للمدربين والخبراء — نحوّل خبرتك إلى فيديوهات جاهزة للنشر تبني الثقة، تعزّز مكانتك، وتساعدك على جذب عملاء محتملين 24/7."
       },
       workLabel: "أعمالي",
       workTitle: "أفضل أعمالي",
@@ -88,10 +88,10 @@ window.SITE_CONFIG = {
       bookACallText: "Apply daba",
       nav: { home: "Lbdaya", reels: "Reels", contact: "Twasl" },
       hero: {
-        line1: "Khli lreels dyalk",
-        line2: "Twqf scroll",
-        line3: "w tjib results",
-        subtitle: "Ma7na-ch ghir freelancers li kaymontiw videos — 7na team kaykhdem b7al content partner dyalek."
+        line1: "Khelli Content Dyalek Yban",
+        line2: "B Niveau Dyal",
+        line3: "Expertise Dyalek",
+        subtitle: "Machi ghir freelancers li kaydiro editing l videos. 7na team kankhedmo b7al content partner l online coaches — kan7awlo expertise dyalek l videos wajdin l nnachr, kaybniw trust w authority w kay3awnok tjbed leads 24/7."
       },
       workLabel: "Lkhedma dyali",
       workTitle: "A7san lkhedma dyali",
