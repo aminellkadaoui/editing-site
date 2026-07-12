@@ -283,7 +283,9 @@ function applyLang(lang){
   if(M.hero.line3){ hh += (M.hero.line2 ? ' ' : '') + '<span class="s">' + M.hero.line3 + '</span>'; }
   document.getElementById('heroTitle').innerHTML = hh;
   document.getElementById('heroSub').textContent = M.hero.subtitle;
-  document.getElementById('heroTag').textContent = M.hero.tagline || '';
+  const _tag = M.hero.tagline || '';
+  document.getElementById('heroTag').textContent = _tag;
+  document.getElementById('heroTag').style.display = _tag ? '' : 'none';
   document.getElementById('workLabel').textContent = M.workLabel;
   document.getElementById('workTitle').textContent = M.workTitle;
   document.getElementById('finalTitle').innerHTML =
