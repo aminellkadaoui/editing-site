@@ -32,6 +32,19 @@ body{font-family:'IBM Plex Sans Arabic',system-ui,sans-serif;background:var(--bg
 .warn{background:#eef6ff;border:1px solid #cfe0ff;border-radius:10px;padding:11px 14px;font-size:12.5px;color:#274b7a;margin-top:12px;line-height:1.6}
 .warn code{background:#dbe8ff;padding:1px 6px;border-radius:5px;font-family:'IBM Plex Mono',monospace}
 @media(max-width:560px){.gh-grid{grid-template-columns:1fr}}
+.langbar{position:sticky;top:57px;z-index:9;display:flex;align-items:center;gap:12px;background:#fff;
+  border:1px solid var(--line);border-radius:14px;padding:12px 16px;margin-bottom:20px;flex-wrap:wrap;box-shadow:0 4px 14px rgba(15,23,32,.05)}
+.langbar .lbl{font-size:13.5px;font-weight:600;color:#374151}
+.langbar .cur{font-size:13.5px;color:var(--muted);font-weight:500}
+.langbar .cur b{color:var(--blue)}
+.lang-seg{display:inline-flex;background:#eef2f8;border-radius:10px;padding:3px;gap:2px}
+.lang-seg button{font-family:inherit;font-weight:700;font-size:13px;border:0;border-radius:8px;padding:8px 18px;cursor:pointer;background:transparent;color:var(--muted);transition:.15s}
+.lang-seg button.active{background:var(--blue);color:#fff}
+.badge-lang,.badge-share{font-family:'IBM Plex Sans Arabic',sans-serif;font-size:11.5px;padding:3px 10px;border-radius:8px;font-weight:600;margin-right:auto}
+.badge-lang{color:var(--blue);background:#eef2ff}
+.badge-share{color:#0a7a52;background:#e5f6ef}
+.step-box{padding:14px;background:#fafbfe;border:1px solid var(--line);border-radius:12px;margin-bottom:12px}
+.step-box .st{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--blue);margin-bottom:10px;font-weight:600}
 .wrap{max-width:920px;margin:0 auto;padding:26px 20px 80px}
 .note{background:#fff8e6;border:1px solid #f6e6b0;border-radius:12px;padding:14px 18px;font-size:14px;margin-bottom:22px;color:#7a5b00}
 .note b{color:#5c4400}
@@ -80,7 +93,18 @@ body{font-family:'IBM Plex Sans Arabic',system-ui,sans-serif;background:var(--bg
 
 <div class="wrap">
   <div class="note">
-    ✏️ عدّل أي حقل هنا. <b>«معاينة»</b> تفتح الموقع بتعديلاتك. <b>«🚀 نشر مباشرة»</b> يرفع التعديلات فوراً على موقعك المنشور (GitHub Pages) — يتحدّث خلال دقيقة تقريباً، بدون أي تصدير أو رفع يدوي. اضبط الاتصال مرّة واحدة في الأسفل. 👇
+    ✏️ عدّل أي حقل هنا. <b>«معاينة»</b> تفتح الموقع بتعديلاتك. <b>«🚀 نشر مباشرة»</b> يرفع التعديلات فوراً على موقعك المنشور. <b>بدّل اللغة من الشريط تحت</b> لتتحكم في نصوص كل لغة على حِدة. 👇
+  </div>
+
+  <!-- سويتش اللغة -->
+  <div class="langbar">
+    <span class="lbl">🌐 اللغة اللي كتعدّل:</span>
+    <div class="lang-seg" id="langSeg">
+      <button data-l="en" class="active" onclick="switchLang('en')">EN</button>
+      <button data-l="ar" onclick="switchLang('ar')">AR</button>
+      <button data-l="darija" onclick="switchLang('darija')">DAR</button>
+    </div>
+    <span class="cur">كتعدّل دبا: <b id="curLangName">الإنجليزية</b></span>
   </div>
 
   <!-- النشر المباشر -->
@@ -100,48 +124,62 @@ body{font-family:'IBM Plex Sans Arabic',system-ui,sans-serif;background:var(--bg
     </div>
   </div>
 
-  <!-- عام -->
+  <!-- عام (مشترك) -->
   <div class="card">
-    <h2><span class="n">1</span> الإعدادات العامة</h2>
-    <div class="field"><label>اسم البراند</label><input id="brand"></div>
-    <div class="field">
-      <label>رابط زر Book A Call <span class="hint">(Calendly / TidyCal / واتساب...)</span></label>
-      <input id="bookACallUrl" dir="ltr" placeholder="https://calendly.com/...">
-    </div>
-    <div class="field"><label>نص الزر</label><input id="bookACallText" dir="ltr"></div>
+    <h2><span class="n">1</span> الإعدادات العامة <span class="badge-share">🌍 مشترك لكل اللغات</span></h2>
+    <div class="field"><label>اسم البراند</label><input id="brand" dir="ltr"></div>
+    <div class="field"><label>رابط زر الحجز <span class="hint">(Calendly / TidyCal / واتساب...)</span></label><input id="bookACallUrl" dir="ltr" placeholder="https://calendly.com/..."></div>
+    <div class="field"><label>فيديو الهيرو <span class="hint">(معرّف يوتيوب)</span></label><input id="h_video" dir="ltr" placeholder="Uxsu1WrvefQ"></div>
   </div>
 
-  <!-- الهيرو -->
+  <!-- الهيرو (حسب اللغة) -->
   <div class="card">
-    <h2><span class="n">2</span> القسم العلوي (Hero)</h2>
-    <div class="field"><label>العنوان — سطر 1 <span class="hint">(عادي)</span></label><input id="h_line1" dir="ltr"></div>
-    <div class="field"><label>العنوان — سطر 2 <span class="hint">(عريض أسود)</span></label><input id="h_line2" dir="ltr"></div>
-    <div class="field"><label>العنوان — الكلمة المميزة <span class="hint">(أزرق مائل)</span></label><input id="h_line3" dir="ltr"></div>
-    <div class="field"><label>النص التوضيحي</label><textarea id="h_sub" dir="ltr"></textarea></div>
-    <div class="field"><label>فيديو الهيرو <span class="hint">(معرّف يوتيوب — الجزء بعد v=)</span></label><input id="h_video" dir="ltr" placeholder="KI0m9SnMAEE"></div>
+    <h2><span class="n">2</span> القسم العلوي (Hero) <span class="badge-lang">🔤 حسب اللغة</span></h2>
+    <div class="field"><label>العنوان — سطر 1 <span class="hint">(عادي)</span></label><input id="h_line1" dir="auto"></div>
+    <div class="field"><label>العنوان — سطر 2 <span class="hint">(عريض)</span></label><input id="h_line2" dir="auto"></div>
+    <div class="field"><label>العنوان — الكلمة المميزة <span class="hint">(أزرق)</span></label><input id="h_line3" dir="auto"></div>
+    <div class="field"><label>النص التوضيحي</label><textarea id="h_sub" dir="auto"></textarea></div>
+    <div class="field"><label>نص زر الحجز <span class="hint">(Apply Now / قدّم الآن...)</span></label><input id="bookACallText" dir="auto"></div>
   </div>
 
-  <!-- الأعمال -->
+  <!-- الأعمال (حسب اللغة) -->
   <div class="card">
-    <h2><span class="n">3</span> قسم الأعمال</h2>
-    <div class="field"><label>التسمية الصغيرة</label><input id="workLabel" dir="ltr"></div>
-    <div class="field"><label>عنوان القسم</label><input id="workTitle" dir="ltr"></div>
+    <h2><span class="n">3</span> قسم الأعمال <span class="badge-lang">🔤 حسب اللغة</span></h2>
+    <div class="field"><label>التسمية الصغيرة</label><input id="workLabel" dir="auto"></div>
+    <div class="field"><label>عنوان القسم</label><input id="workTitle" dir="auto"></div>
   </div>
 
-  <!-- الريلز -->
+  <!-- طريقة العمل (حسب اللغة) -->
   <div class="card">
-    <h2><span class="n">4</span> الريلز <span class="hint" style="font-weight:400;font-size:12px;color:var(--muted)">— معرّف يوتيوب + عدد المشاهدات</span></h2>
+    <h2><span class="n">4</span> طريقة العمل (Process) <span class="badge-lang">🔤 حسب اللغة</span></h2>
+    <div class="field"><label>التسمية الصغيرة</label><input id="proc_label" dir="auto"></div>
+    <div class="field"><label>عنوان القسم</label><input id="proc_title" dir="auto"></div>
+    <div class="field"><label>النص التوضيحي</label><textarea id="proc_sub" dir="auto"></textarea></div>
+    <div id="procSteps"></div>
+  </div>
+
+  <!-- القائمة (حسب اللغة) -->
+  <div class="card">
+    <h2><span class="n">5</span> قائمة التنقّل (Nav) <span class="badge-lang">🔤 حسب اللغة</span></h2>
+    <div class="field"><label>الرئيسية</label><input id="nav_home" dir="auto"></div>
+    <div class="field"><label>الأعمال</label><input id="nav_reels" dir="auto"></div>
+    <div class="field"><label>تواصل</label><input id="nav_contact" dir="auto"></div>
+  </div>
+
+  <!-- الختام (حسب اللغة) -->
+  <div class="card">
+    <h2><span class="n">6</span> القسم الختامي <span class="badge-lang">🔤 حسب اللغة</span></h2>
+    <div class="field"><label>العنوان — الجزء العادي</label><input id="c_plain" dir="auto"></div>
+    <div class="field"><label>العنوان — الجزء المميز <span class="hint">(مائل)</span></label><input id="c_accent" dir="auto"></div>
+    <div class="field"><label>السطر 1</label><input id="c_line1" dir="auto"></div>
+    <div class="field"><label>السطر 2</label><input id="c_line2" dir="auto"></div>
+  </div>
+
+  <!-- الريلز (مشترك) -->
+  <div class="card">
+    <h2><span class="n">7</span> الريلز <span class="badge-share">🌍 مشترك لكل اللغات</span></h2>
     <div id="reels"></div>
     <button class="add" onclick="addReel()">＋ إضافة ريل</button>
-  </div>
-
-  <!-- الختام -->
-  <div class="card">
-    <h2><span class="n">5</span> القسم الختامي</h2>
-    <div class="field"><label>العنوان — الجزء العادي</label><input id="c_plain" dir="ltr"></div>
-    <div class="field"><label>العنوان — الجزء المميز <span class="hint">(مائل)</span></label><input id="c_accent" dir="ltr"></div>
-    <div class="field"><label>السطر 1</label><input id="c_line1" dir="ltr"></div>
-    <div class="field"><label>السطر 2</label><input id="c_line2" dir="ltr"></div>
   </div>
 </div>
 
@@ -157,21 +195,97 @@ let C = (function(){
 
 const $ = id => document.getElementById(id);
 
-/* تعبئة الحقول */
-$('brand').value = C.brand||'';
-$('bookACallUrl').value = C.bookACallUrl||'';
-$('bookACallText').value = C.bookACallText||'';
-$('h_line1').value = C.hero.line1||'';
-$('h_line2').value = C.hero.line2||'';
-$('h_line3').value = C.hero.line3||'';
-$('h_sub').value = C.hero.subtitle||'';
-$('h_video').value = C.hero.videoId||'';
-$('workLabel').value = C.workLabel||'';
-$('workTitle').value = C.workTitle||'';
-$('c_plain').value = C.closing.titlePlain||'';
-$('c_accent').value = C.closing.titleAccent||'';
-$('c_line1').value = C.closing.line1||'';
-$('c_line2').value = C.closing.line2||'';
+/* ===== النظام متعدّد اللغات ===== */
+const LNAME = { en:'الإنجليزية', ar:'العربية', darija:'الدارجة' };
+let curLang = 'en';
+
+/* الحقول المرتبطة باللغة: id الحقل -> المسار داخل كائن اللغة */
+const LANG_FIELDS = {
+  bookACallText:'bookACallText',
+  h_line1:'hero.line1', h_line2:'hero.line2', h_line3:'hero.line3', h_sub:'hero.subtitle',
+  workLabel:'workLabel', workTitle:'workTitle',
+  proc_label:'process.label', proc_title:'process.title', proc_sub:'process.subtitle',
+  nav_home:'nav.home', nav_reels:'nav.reels', nav_contact:'nav.contact',
+  c_plain:'closing.titlePlain', c_accent:'closing.titleAccent', c_line1:'closing.line1', c_line2:'closing.line2'
+};
+
+function getPath(o,p){ return p.split('.').reduce((x,k)=> (x==null?undefined:x[k]), o); }
+function setPath(o,p,v){ const ks=p.split('.'); let x=o;
+  for(let i=0;i<ks.length-1;i++){ if(x[ks[i]]==null||typeof x[ks[i]]!=='object') x[ks[i]]={}; x=x[ks[i]]; }
+  x[ks[ks.length-1]]=v; }
+
+/* كائن اللغة: en = الأساس (C)، غيرها = C.i18n[lang] */
+function langObj(lang){
+  if(lang==='en') return C;
+  C.i18n = C.i18n || {};
+  C.i18n[lang] = C.i18n[lang] || {};
+  return C.i18n[lang];
+}
+
+/* خطوات البروسيس — نبنيها مرّة (عددها ثابت من الأساس) */
+const STEP_COUNT = (C.process && C.process.steps) ? C.process.steps.length : 3;
+(function renderSteps(){
+  const box = $('procSteps');
+  for(let i=0;i<STEP_COUNT;i++){
+    const d = document.createElement('div'); d.className='step-box';
+    d.innerHTML = '<div class="st">خطوة '+(i+1)+'</div>'+
+      '<div class="field"><label>العنوان</label><input id="proc_s'+i+'_title" dir="auto"></div>'+
+      '<div class="field"><label>الوصف</label><textarea id="proc_s'+i+'_desc" dir="auto"></textarea></div>';
+    box.appendChild(d);
+  }
+})();
+
+/* تحميل قيم لغة إلى النموذج */
+function loadLang(lang){
+  const src = langObj(lang);
+  for(const id in LANG_FIELDS){
+    let v = getPath(src, LANG_FIELDS[id]);
+    if(v==null) v = getPath(C, LANG_FIELDS[id]);   // fallback للأساس
+    $(id).value = (v==null ? '' : v);
+  }
+  const lp = (langObj(lang).process)||{}, bp = C.process||{};
+  for(let i=0;i<STEP_COUNT;i++){
+    const st = (lp.steps&&lp.steps[i]) || (bp.steps&&bp.steps[i]) || {title:'',desc:''};
+    $('proc_s'+i+'_title').value = st.title||'';
+    $('proc_s'+i+'_desc').value  = st.desc||'';
+  }
+}
+
+/* حفظ قيم النموذج الحالية في لغة */
+function saveLang(lang){
+  const t = langObj(lang);
+  for(const id in LANG_FIELDS){ setPath(t, LANG_FIELDS[id], $(id).value); }
+  t.process = t.process || {};
+  t.process.steps = [];
+  for(let i=0;i<STEP_COUNT;i++){
+    t.process.steps.push({ title:$('proc_s'+i+'_title').value, desc:$('proc_s'+i+'_desc').value });
+  }
+}
+
+/* التبديل بين اللغات (يحفظ الحالية ثم يحمّل الجديدة) */
+function switchLang(l){
+  if(l===curLang) return;
+  saveLang(curLang);
+  curLang = l;
+  document.querySelectorAll('#langSeg button').forEach(b=> b.classList.toggle('active', b.dataset.l===l));
+  $('curLangName').textContent = LNAME[l];
+  loadLang(l);
+}
+
+/* الحقول المشتركة (نفسها لكل اللغات) */
+function loadShared(){
+  $('brand').value = C.brand||'';
+  $('bookACallUrl').value = C.bookACallUrl||'';
+  $('h_video').value = (C.hero&&C.hero.videoId)||'';
+}
+function saveShared(){
+  C.brand = $('brand').value.trim();
+  C.bookACallUrl = $('bookACallUrl').value.trim() || '#';
+  setPath(C, 'hero.videoId', $('h_video').value.trim());
+}
+
+loadShared();
+loadLang('en');
 
 /* الريلز */
 const reelsEl = $('reels');
@@ -194,25 +308,16 @@ function addReel(){ reelsEl.appendChild(reelRow({id:'',views:''})); renumber(); 
 (C.reels||[]).forEach(r=> reelsEl.appendChild(reelRow(r)));
 renumber();
 
-/* جمع القيم */
+/* جمع كل القيم (كل اللغات + المشترك) */
 function collect(){
-  const reels = [...reelsEl.querySelectorAll('.reel-row')].map(row=>({
+  saveLang(curLang);   // نحفظ اللغة المعروضة حالياً
+  saveShared();        // البراند + الرابط + فيديو الهيرو
+  C.reels = [...reelsEl.querySelectorAll('.reel-row')].map(row=>({
     id: row.querySelector('.r-id').value.trim(),
     views: row.querySelector('.r-views').value.trim()
   })).filter(r=>r.id);
-  /* ننطلق من الإعدادات الحالية كي لا نفقد الترجمات (i18n) وأي حقول أخرى */
-  const out = JSON.parse(JSON.stringify(C));
-  out.brand = $('brand').value.trim();
-  out.bookACallUrl = $('bookACallUrl').value.trim() || '#';
-  out.bookACallText = $('bookACallText').value.trim() || 'Apply Now';
-  out.hero = Object.assign({}, out.hero, { line1:$('h_line1').value, line2:$('h_line2').value,
-    line3:$('h_line3').value, subtitle:$('h_sub').value, videoId:$('h_video').value.trim() });
-  out.workLabel = $('workLabel').value;
-  out.workTitle = $('workTitle').value;
-  out.reels = reels;
-  out.closing = Object.assign({}, out.closing, { titlePlain:$('c_plain').value,
-    titleAccent:$('c_accent').value, line1:$('c_line1').value, line2:$('c_line2').value });
-  return out;
+  if(!C.bookACallText) C.bookACallText = 'Apply Now';
+  return JSON.parse(JSON.stringify(C));
 }
 
 function toast(msg){ $('toastMsg').textContent=msg; const t=$('toast'); t.classList.add('show'); clearTimeout(window._tt); window._tt=setTimeout(()=>t.classList.remove('show'),2200); }
