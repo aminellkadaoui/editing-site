@@ -15,7 +15,7 @@ window.SITE_CONFIG = {
     line1: "Make Your Content Look",
     line2: "As Strong As Your",
     line3: "Expertise",
-    subtitle: "We're not just freelancers editing videos. We're a content partner for online coaches — turning your expertise into ready-to-publish videos that build trust, authority, and attract leads 24/7.",
+    subtitle: "Turning your expertise into ready-to-publish videos that build trust, authority, and attract leads.",
     videoId: "Uxsu1WrvefQ"
   },
 
@@ -23,13 +23,14 @@ window.SITE_CONFIG = {
   workTitle: "My Best Work",
 
   /* الريلز — id = معرّف يوتيوب · views = المشاهدات (اتركها فارغة لإخفاء الشارة) */
+  /* الريلز مرتّبة كأزواج — كل زوج = عمود/عميل واحد (فيديو فوق + فيديو تحت) */
   reels: [
-    { id: "3fQCQ6n434E", views: "158K"  },
-    { id: "Ytu0_ETdSBk", views: "130K"  },
     { id: "eoiDtYK9i2M", views: "296K"  },
-    { id: "bqGQXk0KZPA", views: "283K"  },
+    { id: "Ytu0_ETdSBk", views: "150K"  },
+    { id: "IOmmXnQNBY0", views: "257K"  },
     { id: "7WKXK1On5LQ", views: "63.6K" },
-    { id: "IOmmXnQNBY0", views: "257K"  }
+    { id: "3fQCQ6n434E", views: "158K"  },
+    { id: "bqGQXk0KZPA", views: "283K"  }
   ],
 
   closing: {
@@ -91,7 +92,7 @@ window.SITE_CONFIG = {
         line1: "Khelli Content Dyalek Yban",
         line2: "B Niveau Dyal",
         line3: "Expertise Dyalek",
-        subtitle: "Machi ghir freelancers li kaydiro editing l videos. 7na team kankhedmo b7al content partner l online coaches — kan7awlo expertise dyalek l videos wajdin l nnachr, kaybniw trust w authority w kay3awnok tjbed leads 24/7."
+        subtitle: "Kan7awlo expertise dyalek l videos wajdin l nnachr, kaybniw trust w authority w kay3awnok tjbed leads."
       },
       workLabel: "Lkhedma dyali",
       workTitle: "A7san lkhedma dyali",
