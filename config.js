@@ -85,7 +85,7 @@ window.SITE_CONFIG = {
       }
     },
     darija: {
-      bookACallText: "7jez Call",
+      bookACallText: "7jez Mokalma",
       nav: { home: "Lbdaya", reels: "Reels", contact: "Twasl" },
       hero: {
         line1: "Khelli Content Dyalek Yban",
