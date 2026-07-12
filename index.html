@@ -52,8 +52,13 @@ main{position:relative;z-index:1}
 
 /* ===== دعم العربية / الدارجة (RTL) ===== */
 body.rtl{font-family:'IBM Plex Sans Arabic',var(--sans)}
-body.rtl .hero h1,body.rtl .final h2{font-family:'IBM Plex Sans Arabic',sans-serif;text-transform:none;letter-spacing:0;line-height:1.35}
-body.rtl .hero h1 .s,body.rtl .final h2 .s{font-family:'IBM Plex Sans Arabic',sans-serif;font-style:normal;font-weight:700;font-size:1em}
+body.rtl .hero h1{font-family:'IBM Plex Sans Arabic',sans-serif;text-transform:none;letter-spacing:-.03em;line-height:1.15;color:#101010;font-weight:600}
+body.rtl .hero h1 .b{font-weight:600}
+body.rtl .hero h1 .s{font-family:'IBM Plex Sans Arabic',sans-serif;font-style:normal;font-weight:600;font-size:1em;
+  background:linear-gradient(90deg,#5dc3ff,#1c79fe);-webkit-background-clip:text;background-clip:text;
+  color:transparent;-webkit-text-fill-color:transparent;filter:none}
+body.rtl .final h2{font-family:'IBM Plex Sans Arabic',sans-serif;text-transform:none;letter-spacing:-.02em;line-height:1.3}
+body.rtl .final h2 .s{font-family:'IBM Plex Sans Arabic',sans-serif;font-style:normal;font-weight:700;font-size:1em}
 body.rtl .sub,body.rtl .final p,body.rtl .nav-links a,body.rtl .work h2,body.rtl .work .label span,body.rtl .proc-head h2,body.rtl .proc-head p,body.rtl .proc-card h3,body.rtl .proc-card p{font-family:'IBM Plex Sans Arabic',sans-serif}
 body.rtl .btn{font-family:'IBM Plex Sans Arabic',sans-serif;font-style:normal;font-weight:600;font-size:18px}
 
@@ -267,8 +272,10 @@ function pack(lang){
 }
 function applyLang(lang){
   const M = pack(lang);
-  document.getElementById('heroTitle').innerHTML =
-    M.hero.line1 + ' <span class="b">' + M.hero.line2 + '</span> <span class="s">' + M.hero.line3 + '</span>';
+  let hh = M.hero.line1;
+  if(M.hero.line2){ hh += ' <span class="b">' + M.hero.line2 + '</span>'; } else { hh += '<br>'; }
+  if(M.hero.line3){ hh += (M.hero.line2 ? ' ' : '') + '<span class="s">' + M.hero.line3 + '</span>'; }
+  document.getElementById('heroTitle').innerHTML = hh;
   document.getElementById('heroSub').textContent = M.hero.subtitle;
   document.getElementById('workLabel').textContent = M.workLabel;
   document.getElementById('workTitle').textContent = M.workTitle;
