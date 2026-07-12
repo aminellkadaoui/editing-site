@@ -194,7 +194,8 @@ body{font-family:'IBM Plex Sans Arabic',system-ui,sans-serif;background:var(--bg
 
 <div class="toast" id="toast"><span class="ok">✓</span> <span id="toastMsg"></span></div>
 
-<script src="config.js"></script>
+<!-- تحميل المحتوى دائماً طازجاً (تجاوز كاش المتصفح) -->
+<script>document.write('<script src="config.js?v=' + Date.now() + '"><\/script>');</script>
 <script>
 /* الحالة الحالية: من localStorage إن وُجد، وإلا من config.js */
 let C = (function(){

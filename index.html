@@ -257,7 +257,8 @@ footer b{color:var(--ink);font-weight:700}
 
 <footer>© <span id="year"></span> <b id="brandName">Amine Editing Team</b></footer>
 
-<script src="config.js"></script>
+<!-- تحميل المحتوى دائماً طازجاً (تجاوز كاش المتصفح بعد كل نشر) -->
+<script>document.write('<script src="config.js?v=' + Date.now() + '"><\/script>');</script>
 <script>
 const C = (function(){
   try{ const ls = localStorage.getItem('SITE_CONFIG'); if(ls) return JSON.parse(ls); }catch(e){}
