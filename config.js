@@ -51,6 +51,18 @@ window.SITE_CONFIG = {
     ]
   },
 
+  /* قسم معايير العمل — أرقام حمراء بدل الأيقونات */
+  guidelines: {
+    label: "Guidelines",
+    title: "Work Guidelines",
+    subtitle: "We work with selected clients whose content aligns with our values and production standards.",
+    steps: [
+      { title: "No Music", desc: "We do not use music in our edits. We focus on clean sound design, clarity, pacing, and visual storytelling." },
+      { title: "No Women's Images", desc: "We do not include women's images or scenes in the videos we produce." },
+      { title: "Selective Content", desc: "We only work with specific types of content. Every project is reviewed first to make sure it fits our values, standards, and workflow." }
+    ]
+  },
+
   /* روابط القائمة (الإنجليزية) */
   nav: { home: "Home", reels: "Reels", contact: "Contact" },
 
@@ -82,6 +94,16 @@ window.SITE_CONFIG = {
           { title: "Unique Editing Style", desc: "نبني لك ستايل مونتاج خاص يعكس البراند، الخبرة، وطريقة ظهورك أمام الجمهور." },
           { title: "التسليم والتحليل", desc: "نسلّم الفيديوهات جاهزة للنشر، ونراجع ما الذي يعمل بشكل أفضل لتحسين المحتوى القادم." }
         ]
+      },
+      guidelines: {
+        label: "الشروط",
+        title: "معايير العمل",
+        subtitle: "نعمل مع عملاء مختارين فقط، حسب نوع المحتوى ومدى توافقه مع قيمنا ومعايير العمل لدينا.",
+        steps: [
+          { title: "بدون موسيقى", desc: "لا نستخدم الموسيقى في المونتاج. نعتمد على وضوح الصوت، الإيقاع، الساوند ديزاين، وطريقة عرض بصرية احترافية." },
+          { title: "بدون صور للنساء", desc: "لا نضع صورًا أو مشاهد للنساء داخل الفيديوهات التي ننتجها، كما أننا لا نعمل مع النساء." },
+          { title: "نختار المحتوى بعناية", desc: "لا نقبل كل المشاريع. نراجع نوع المحتوى أولًا للتأكد من توافقه مع قيمنا، معاييرنا، وطريقة عملنا." }
+        ]
       }
     },
     darija: {
@@ -109,6 +131,16 @@ window.SITE_CONFIG = {
           { title: "Kanstelmo Project Details", desc: "Kanstelmo mennek l infos l mohimma 3la business, offer, audience, references, w brand direction." },
           { title: "Unique Editing Style", desc: "Kanbniw lik style dyal editing khass bik, kaybin brand dyalek, expertise, w authority." },
           { title: "Delivery & Analysis", desc: "Kanselmo videos wajdin l nnachr, w kanchofo chno khdem mzyan bach ntawro content jay." }
+        ]
+      },
+      guidelines: {
+        label: "Shorot",
+        title: "Ma3ayir lkhadma",
+        subtitle: "Kan khdmou ghir m3a clients li mnassbin lina, 7sab no3 dyal lcontent w wach kaytawaf9 m3a l9iyam w ma3ayir lkhadma dyalna.",
+        steps: [
+          { title: "Bla music", desc: "Ma kansta3mlouch music f montage. Kan3tamdo 3la wodou7 ssout, rhythm, sound design, w tari9a basariya professional." },
+          { title: "Bla tsawr dyal nssa", desc: "Ma kandiroch tsawr wla machahid dyal nssa dakhel videos li kan ntajo, w ma kan khdmouch m3a nssa." },
+          { title: "Kan khtaro lcontent b 3inaya", desc: "Ma kan9blouch kolchi projects. Kan reviewiw no3 dyal lcontent lwel bach nt2akdo bli kaytawaf9 m3a l9iyam dyalna, ma3ayirna, w tari9a dyal lkhadma." }
         ]
       }
     }

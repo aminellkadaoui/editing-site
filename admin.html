@@ -158,6 +158,15 @@ body{font-family:'IBM Plex Sans Arabic',system-ui,sans-serif;background:var(--bg
     <div id="procSteps"></div>
   </div>
 
+  <!-- معايير العمل (حسب اللغة) -->
+  <div class="card">
+    <h2><span class="n">4.5</span> معايير العمل (Guidelines) <span class="badge-lang">🔤 حسب اللغة</span></h2>
+    <div class="field"><label>التسمية الصغيرة</label><input id="guide_label" dir="auto"></div>
+    <div class="field"><label>عنوان القسم</label><input id="guide_title" dir="auto"></div>
+    <div class="field"><label>النص التوضيحي</label><textarea id="guide_sub" dir="auto"></textarea></div>
+    <div id="guideSteps"></div>
+  </div>
+
   <!-- القائمة (حسب اللغة) -->
   <div class="card">
     <h2><span class="n">5</span> قائمة التنقّل (Nav) <span class="badge-lang">🔤 حسب اللغة</span></h2>
@@ -205,6 +214,7 @@ const LANG_FIELDS = {
   h_line1:'hero.line1', h_line2:'hero.line2', h_line3:'hero.line3', h_sub:'hero.subtitle',
   workLabel:'workLabel', workTitle:'workTitle',
   proc_label:'process.label', proc_title:'process.title', proc_sub:'process.subtitle',
+  guide_label:'guidelines.label', guide_title:'guidelines.title', guide_sub:'guidelines.subtitle',
   nav_home:'nav.home', nav_reels:'nav.reels', nav_contact:'nav.contact',
   c_plain:'closing.titlePlain', c_accent:'closing.titleAccent', c_line1:'closing.line1', c_line2:'closing.line2'
 };
@@ -235,6 +245,36 @@ const STEP_COUNT = (C.process && C.process.steps) ? C.process.steps.length : 3;
   }
 })();
 
+/* خطوات معايير العمل — نفس المنطق */
+const GUIDE_COUNT = (C.guidelines && C.guidelines.steps) ? C.guidelines.steps.length : 3;
+(function renderGuideSteps(){
+  const box = $('guideSteps');
+  for(let i=0;i<GUIDE_COUNT;i++){
+    const d = document.createElement('div'); d.className='step-box';
+    d.innerHTML = '<div class="st">بند '+(i+1)+'</div>'+
+      '<div class="field"><label>العنوان</label><input id="guide_s'+i+'_title" dir="auto"></div>'+
+      '<div class="field"><label>الوصف</label><textarea id="guide_s'+i+'_desc" dir="auto"></textarea></div>';
+    box.appendChild(d);
+  }
+})();
+
+/* أداة: تحميل/حفظ خطوات قسم (process أو guidelines) */
+function loadSteps(lang, key, prefix, count){
+  const lp = (langObj(lang)[key])||{}, bp = C[key]||{};
+  for(let i=0;i<count;i++){
+    const st = (lp.steps&&lp.steps[i]) || (bp.steps&&bp.steps[i]) || {title:'',desc:''};
+    $(prefix+i+'_title').value = st.title||'';
+    $(prefix+i+'_desc').value  = st.desc||'';
+  }
+}
+function saveSteps(t, key, prefix, count){
+  t[key] = t[key] || {};
+  t[key].steps = [];
+  for(let i=0;i<count;i++){
+    t[key].steps.push({ title:$(prefix+i+'_title').value, desc:$(prefix+i+'_desc').value });
+  }
+}
+
 /* تحميل قيم لغة إلى النموذج */
 function loadLang(lang){
   const src = langObj(lang);
@@ -243,23 +283,16 @@ function loadLang(lang){
     if(v==null) v = getPath(C, LANG_FIELDS[id]);   // fallback للأساس
     $(id).value = (v==null ? '' : v);
   }
-  const lp = (langObj(lang).process)||{}, bp = C.process||{};
-  for(let i=0;i<STEP_COUNT;i++){
-    const st = (lp.steps&&lp.steps[i]) || (bp.steps&&bp.steps[i]) || {title:'',desc:''};
-    $('proc_s'+i+'_title').value = st.title||'';
-    $('proc_s'+i+'_desc').value  = st.desc||'';
-  }
+  loadSteps(lang, 'process', 'proc_s', STEP_COUNT);
+  loadSteps(lang, 'guidelines', 'guide_s', GUIDE_COUNT);
 }
 
 /* حفظ قيم النموذج الحالية في لغة */
 function saveLang(lang){
   const t = langObj(lang);
   for(const id in LANG_FIELDS){ setPath(t, LANG_FIELDS[id], $(id).value); }
-  t.process = t.process || {};
-  t.process.steps = [];
-  for(let i=0;i<STEP_COUNT;i++){
-    t.process.steps.push({ title:$('proc_s'+i+'_title').value, desc:$('proc_s'+i+'_desc').value });
-  }
+  saveSteps(t, 'process', 'proc_s', STEP_COUNT);
+  saveSteps(t, 'guidelines', 'guide_s', GUIDE_COUNT);
 }
 
 /* التبديل بين اللغات (يحفظ الحالية ثم يحمّل الجديدة) */
