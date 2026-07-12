@@ -20,7 +20,7 @@ window.SITE_CONFIG = {
   },
 
   workLabel: "Portfolio",
-  workTitle: "My Best Work",
+  workTitle: "Our Best Work",
 
   /* الريلز — id = معرّف يوتيوب · views = المشاهدات (اتركها فارغة لإخفاء الشارة) */
   /* الريلز مرتّبة كأزواج — كل زوج = عمود/عميل واحد (فيديو فوق + فيديو تحت) */
@@ -66,8 +66,8 @@ window.SITE_CONFIG = {
         line3: "خبرتك",
         subtitle: "نحوّل خبرتك إلى فيديوهات جاهزة للنشر تعزّز مكانتك، وتساعدك على جذب عملاء محتملين"
       },
-      workLabel: "أعمالي",
-      workTitle: "أفضل أعمالي",
+      workLabel: "أعمالنا",
+      workTitle: "أفضل أعمالنا",
       closing: {
         titlePlain: "ماذا تنتظر",
         titleAccent: "بعد؟",
@@ -94,8 +94,8 @@ window.SITE_CONFIG = {
         line3: "Expertise Dyalek",
         subtitle: "Kan7awlo expertise dyalek l videos wajdin l nnachr, kaybniw trust w authority w kay3awnok tjbed leads."
       },
-      workLabel: "Lkhedma dyali",
-      workTitle: "A7san lkhedma dyali",
+      workLabel: "Lkhedma dyalna",
+      workTitle: "A7san lkhedma dyalna",
       closing: {
         titlePlain: "3lach katsanna",
         titleAccent: "?",
