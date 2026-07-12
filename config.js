@@ -24,12 +24,12 @@ window.SITE_CONFIG = {
 
   /* الريلز — id = معرّف يوتيوب · views = المشاهدات (اتركها فارغة لإخفاء الشارة) */
   reels: [
+    { id: "eoiDtYK9i2M", views: "296K"  },
     { id: "bqGQXk0KZPA", views: "283K"  },
     { id: "7WKXK1On5LQ", views: "63.6K" },
     { id: "IOmmXnQNBY0", views: "257K"  },
     { id: "Tbnqnp31p4A", views: "1K"    },
-    { id: "TL8oC1MHu-g", views: "740K"  },
-    { id: "WS3BLvUL5Rc", views: "685K"  }
+    { id: "TL8oC1MHu-g", views: "740K"  }
   ],
 
   closing: {
