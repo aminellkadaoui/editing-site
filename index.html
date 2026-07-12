@@ -27,13 +27,19 @@ img{max-width:100%;display:block}
 .wrap{max-width:1128px;margin:0 auto;padding:0 20px}
 
 /* ===== الزر ===== */
-.btn{display:inline-flex;align-items:center;justify-content:center;
+.btn{position:relative;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;
   background:var(--btn);color:#fff;text-decoration:none;
   min-width:200px;height:52px;padding:0 32px;border-radius:60px;
   font-family:var(--serif);font-style:italic;font-size:25px;line-height:1;
-  box-shadow:0 0 19px rgba(46,133,255,.34);
-  transition:transform .22s ease}
-.btn:hover{transform:scale(1.05)}
+  box-shadow:0 0 19px rgba(46,133,255,.34),inset 0 1px 0 rgba(255,255,255,.3),inset 0 -1px 0 rgba(0,0,0,.12);
+  transition:transform .22s ease-out,box-shadow .22s ease}
+.btn span{position:relative;z-index:1}
+.btn:hover{transform:scale(1.05);box-shadow:0 0 28px rgba(46,133,255,.5),inset 0 1px 0 rgba(255,255,255,.38),inset 0 -1px 0 rgba(0,0,0,.12)}
+.btn:active{transform:scale(.98)}
+.btn::after{content:'';position:absolute;top:0;left:-100%;width:60%;height:100%;pointer-events:none;
+  background:linear-gradient(120deg,transparent,rgba(255,255,255,.5),transparent);
+  transform:skewX(-20deg);transition:left 650ms ease}
+.btn:hover::after{left:150%}
 
 /* ===== فيديو بضغطة ===== */
 .ratio{position:relative;background:#000;overflow:hidden;cursor:pointer;border-radius:inherit}
@@ -110,7 +116,7 @@ footer b{color:var(--ink);font-weight:700}
       <p class="sub" id="heroSub"></p>
     </div>
     <div class="dash"><div class="ratio wide" id="heroVideo"></div></div>
-    <div class="hero-cta"><a class="btn" id="heroCta" href="#"><span id="heroCtaText">Book A Call</span></a></div>
+    <div class="hero-cta"><a class="btn" id="heroCta" href="#"><span id="heroCtaText">Apply Now</span></a></div>
   </header>
 
   <!-- BEST WORK -->
@@ -127,7 +133,7 @@ footer b{color:var(--ink);font-weight:700}
     <h2 id="finalTitle"></h2>
     <p id="finalLine1"></p>
     <p id="finalLine2"></p>
-    <a class="btn" id="finalCta" href="#"><span id="finalCtaText">Book A Call</span></a>
+    <a class="btn" id="finalCta" href="#"><span id="finalCtaText">Apply Now</span></a>
   </section>
 </main>
 

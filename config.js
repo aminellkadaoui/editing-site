@@ -7,7 +7,7 @@ window.SITE_CONFIG = {
 
   /* رابط زر "Book A Call" — ضع رابط Calendly / TidyCal / أي رابط حجز */
   bookACallUrl: "#",
-  bookACallText: "Book A Call",
+  bookACallText: "Apply Now",
 
   /* القسم العلوي (Hero) */
   hero: {
