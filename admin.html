@@ -169,17 +169,19 @@ function collect(){
     id: row.querySelector('.r-id').value.trim(),
     views: row.querySelector('.r-views').value.trim()
   })).filter(r=>r.id);
-  return {
-    brand: $('brand').value.trim(),
-    bookACallUrl: $('bookACallUrl').value.trim() || '#',
-    bookACallText: $('bookACallText').value.trim() || 'Book A Call',
-    hero:{ line1:$('h_line1').value, line2:$('h_line2').value, line3:$('h_line3').value,
-      subtitle:$('h_sub').value, videoId:$('h_video').value.trim() },
-    workLabel: $('workLabel').value, workTitle: $('workTitle').value,
-    reels,
-    closing:{ titlePlain:$('c_plain').value, titleAccent:$('c_accent').value,
-      line1:$('c_line1').value, line2:$('c_line2').value }
-  };
+  /* ننطلق من الإعدادات الحالية كي لا نفقد الترجمات (i18n) وأي حقول أخرى */
+  const out = JSON.parse(JSON.stringify(C));
+  out.brand = $('brand').value.trim();
+  out.bookACallUrl = $('bookACallUrl').value.trim() || '#';
+  out.bookACallText = $('bookACallText').value.trim() || 'Apply Now';
+  out.hero = Object.assign({}, out.hero, { line1:$('h_line1').value, line2:$('h_line2').value,
+    line3:$('h_line3').value, subtitle:$('h_sub').value, videoId:$('h_video').value.trim() });
+  out.workLabel = $('workLabel').value;
+  out.workTitle = $('workTitle').value;
+  out.reels = reels;
+  out.closing = Object.assign({}, out.closing, { titlePlain:$('c_plain').value,
+    titleAccent:$('c_accent').value, line1:$('c_line1').value, line2:$('c_line2').value });
+  return out;
 }
 
 function toast(msg){ $('toastMsg').textContent=msg; const t=$('toast'); t.classList.add('show'); clearTimeout(window._tt); window._tt=setTimeout(()=>t.classList.remove('show'),2200); }
