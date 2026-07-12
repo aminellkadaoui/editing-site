@@ -29,7 +29,8 @@ window.SITE_CONFIG = {
     { id: "WS3BLvUL5Rc", views: "685K" },
     { id: "ZH23EBshnRo", views: "936K" },
     { id: "iFBnWbXEbFU", views: "3.2M" },
-    { id: "8wk6V4x_Aoo", views: "2M"   }
+    { id: "8wk6V4x_Aoo", views: "2M"   },
+    { id: "IOmmXnQNBY0", views: "257K" }
   ],
 
   closing: {
