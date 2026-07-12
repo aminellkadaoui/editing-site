@@ -158,7 +158,13 @@ footer b{color:var(--ink);font-weight:700}
 @media(max-width:900px){.grid{gap:20px}.reel-col{gap:20px}}
 @media(max-width:560px){
   .hero{padding-top:20px}
-  .wrap{padding:0 22px}
+  /* longhand فقط للجوانب كي لا نُصفّر padding-top للأقسام */
+  .wrap{padding-left:22px;padding-right:22px}
+  /* مسافات الأقسام على الجوال (كانت مُلغاة) */
+  .work{padding-top:66px}
+  .process{padding-top:66px}
+  .final{padding-top:66px}
+  .hero-cta{margin-top:34px}
   /* الهيدلاين العربي: سطرين — «بمستوى خبرتك» في سطر واحد */
   body.rtl .hero h1{font-size:30px}
   body.rtl .hero h1 .b,body.rtl .hero h1 .s{font-size:1.5em}
@@ -168,12 +174,13 @@ footer b{color:var(--ink);font-weight:700}
   .reel .views{font-size:15px;padding:6px 13px;top:-15px}
   .reel .views svg{width:18px;height:13px}
   /* بطاقات المراحل أصغر على الجوال */
-  .proc-card{padding:28px 22px;min-height:0;border-radius:22px}
-  .proc-num{width:58px;height:58px;border-radius:18px;margin-bottom:18px}
-  .proc-num svg{width:28px;height:28px}
-  .proc-card h3{font-size:20px;margin-bottom:10px}
-  .proc-card p{font-size:15.5px}
-  .proc-head{margin-bottom:30px}
+  .proc-head{margin-bottom:26px}
+  .proc-grid{gap:14px}
+  .proc-card{padding:22px 20px;min-height:0;border-radius:20px}
+  .proc-num{width:50px;height:50px;border-radius:16px;margin-bottom:14px}
+  .proc-num svg{width:25px;height:25px}
+  .proc-card h3{font-size:18.5px;margin-bottom:8px}
+  .proc-card p{font-size:14.5px;line-height:1.6}
 }
 </style>
 </head>
