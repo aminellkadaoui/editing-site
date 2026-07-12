@@ -7,8 +7,8 @@ window.SITE_CONFIG = {
   brand: "Amine Editing Team",
 
   /* رابط زر الحجز — Calendly / TidyCal / واتساب... */
-  bookACallUrl: "#",
-  bookACallText: "Apply Now",
+  bookACallUrl: "https://calendar.app.google/Wox9zm9zaCydyEkG8",
+  bookACallText: "Book A Call",
 
   /* القسم العلوي (Hero) — الإنجليزية */
   hero: {
@@ -58,7 +58,7 @@ window.SITE_CONFIG = {
   /* ===== الترجمات ===== */
   i18n: {
     ar: {
-      bookACallText: "قدّم الآن",
+      bookACallText: "احجز مكالمة",
       nav: { home: "الرئيسية", reels: "الأعمال", contact: "تواصل" },
       hero: {
         line1: "اجعل محتواك يبدو",
@@ -86,7 +86,7 @@ window.SITE_CONFIG = {
       }
     },
     darija: {
-      bookACallText: "Apply daba",
+      bookACallText: "7jez Call",
       nav: { home: "Lbdaya", reels: "Reels", contact: "Twasl" },
       hero: {
         line1: "Khelli Content Dyalek Yban",

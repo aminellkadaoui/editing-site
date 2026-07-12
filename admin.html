@@ -364,14 +364,31 @@ function markGH(){
   el.textContent = ok ? ('متصل ✓ ('+g.owner+'/'+g.repo+')') : 'غير مضبوط';
   el.className = 'gh-state ' + (ok?'on':'off');
 }
+/* تنظيف: نقبل حتى لو لصق المستخدم رابطاً كاملاً بدل الاسم فقط */
+function cleanOwner(v){
+  v=(v||'').trim();
+  let m = v.match(/github\.com\/([^\/#?]+)/i); if(m) return m[1];
+  m = v.match(/([^\/.#?]+)\.github\.io/i); if(m) return m[1];
+  return v.replace(/^https?:\/\//i,'').replace(/[\/#?].*$/,'');
+}
+function cleanRepo(v){
+  v=(v||'').trim().replace(/[#\/\s]+$/,'');
+  let m = v.match(/github\.io\/([^\/#?]+)/i) || v.match(/github\.com\/[^\/]+\/([^\/#?]+)/i);
+  if(m) return m[1].replace(/\.git$/i,'');
+  if(/https?:|\//i.test(v)){ const p=v.replace(/^https?:\/\//i,'').split('/').filter(Boolean); v=p[p.length-1]||v; }
+  return v.replace(/\.git$/i,'');
+}
 function saveGH(){
   const g = {
-    owner:  $('gh_owner').value.trim(),
-    repo:   $('gh_repo').value.trim(),
+    owner:  cleanOwner($('gh_owner').value),
+    repo:   cleanRepo($('gh_repo').value),
     branch: $('gh_branch').value.trim() || 'main',
     path:   $('gh_path').value.trim() || 'config.js',
     token:  $('gh_token').value.trim()
   };
+  // نعيد كتابة الحقلين بالقيمة المُنظّفة كي يراها المستخدم
+  $('gh_owner').value = g.owner;
+  $('gh_repo').value  = g.repo;
   localStorage.setItem('GH_CFG', JSON.stringify(g));
   markGH();
   toast('حُفظت إعدادات الاتصال');
