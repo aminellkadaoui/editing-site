@@ -3,7 +3,7 @@
    ============================================================ */
 window.SITE_CONFIG = {
   "brand": "Amine Editing Team",
-  "bookACallUrl": "https://aminellkadaoui.github.io/editing-site/#",
+  "bookACallUrl": "https://calendar.app.google/Wox9zm9zaCydyEkG8",
   "bookACallText": "Apply Now",
   "hero": {
     "line1": "Make Your Content Look",
