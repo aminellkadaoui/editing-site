@@ -15,7 +15,7 @@ window.SITE_CONFIG = {
     line1: "Make Your Reels",
     line2: "Stop the Scroll &",
     line3: "Drive Results",
-    subtitle: "Most editors make your videos look good. I make them perform. High-quality editing that builds your brand and gets people to act.",
+    subtitle: "Most editors make your videos look good. We make them perform. High-quality editing that builds your brand and gets people to act.",
     videoId: "KI0m9SnMAEE"
   },
 
@@ -51,7 +51,7 @@ window.SITE_CONFIG = {
         line1: "اجعل ريلزك",
         line2: "توقف التمرير",
         line3: "وتحقّق النتائج",
-        subtitle: "أغلب المونتيرين يجعلون فيديوهاتك تبدو جيدة. أنا أجعلها تحقق نتائج — مونتاج احترافي يبني علامتك ويدفع الناس للتفاعل."
+        subtitle: "أغلب المونتيرين يجعلون فيديوهاتك تبدو جيدة. نحن نجعلها تحقق نتائج — مونتاج احترافي يبني علامتك ويدفع الناس للتفاعل."
       },
       workLabel: "أعمالي",
       workTitle: "أفضل أعمالي",
@@ -69,7 +69,7 @@ window.SITE_CONFIG = {
         line1: "Khli lreels dyalk",
         line2: "Twqf scroll",
         line3: "w tjib results",
-        subtitle: "Bzaf dyal editors kaykheliw lvideos dyalk ybano mzyanin. Ana kankheliha tjib results — editing professional kaybni lbrand dyalk w kaykheli nas ytharrko."
+        subtitle: "Bzaf dyal editors kaykheliw lvideos dyalk ybano mzyanin. 7na kankheliwha tjib results — editing professional kaybni lbrand dyalk w kaykheli nas ytharrko."
       },
       workLabel: "Lkhedma dyali",
       workTitle: "A7san lkhedma dyali",
