@@ -138,7 +138,7 @@ window.SITE_CONFIG = {
         title: "Ma3ayir lkhadma",
         subtitle: "Kan khdmou ghir m3a clients li mnassbin lina, 7sab no3 dyal lcontent w wach kaytawaf9 m3a l9iyam w ma3ayir lkhadma dyalna.",
         steps: [
-          { title: "Bla music", desc: "Ma kansta3mlouch music f montage. Kan3tamdo 3la wodou7 ssout, rhythm, sound design, w tari9a basariya professional." },
+          { title: "Bla music", desc: "Ma kansta3mlouch music f montage. Kan3tmdo 3la sound design, clarity, pacing, w visual presentation." },
           { title: "Bla tsawr dyal nssa", desc: "Ma kandiroch tsawr wla machahid dyal nssa dakhel videos li kan ntajo, w ma kan khdmouch m3a nssa." },
           { title: "Kan khtaro lcontent b 3inaya", desc: "Ma kan9blouch kolchi projects. Kan reviewiw no3 dyal lcontent lwel bach nt2akdo bli kaytawaf9 m3a l9iyam dyalna, ma3ayirna, w tari9a dyal lkhadma." }
         ]
