@@ -196,11 +196,9 @@ body{font-family:'IBM Plex Sans Arabic',system-ui,sans-serif;background:var(--bg
 <!-- تحميل المحتوى دائماً طازجاً (تجاوز كاش المتصفح) -->
 <script>document.write('<script src="config.js?v=' + Date.now() + '"><\/script>');</script>
 <script>
-/* الحالة الحالية: من localStorage إن وُجد، وإلا من config.js */
-let C = (function(){
-  try{ const ls = localStorage.getItem('SITE_CONFIG'); if(ls) return JSON.parse(ls); }catch(e){}
-  return JSON.parse(JSON.stringify(window.SITE_CONFIG));
-})();
+/* نبدأ دائماً من config.js المنشور الطازج (وليس من كاش localStorage القديم)
+   حتى لا يُصدّر نشرٌ لاحق نسخةً قديمة فيُرجِع المحتوى للخلف */
+let C = JSON.parse(JSON.stringify(window.SITE_CONFIG));
 
 const $ = id => document.getElementById(id);
 
