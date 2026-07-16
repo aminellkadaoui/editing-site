@@ -76,6 +76,9 @@ body.rtl .btn{font-family:'IBM Plex Sans Arabic',sans-serif;font-style:normal;fo
   background:linear-gradient(120deg,transparent,rgba(255,255,255,.5),transparent);
   transform:skewX(-20deg);transition:left 650ms ease}
 .btn:hover::after{left:150%}
+/* العربية: اللمعة تمشي من اليمين إلى اليسار */
+body.rtl .btn::after{left:150%;transform:skewX(20deg)}
+body.rtl .btn:hover::after{left:-100%}
 
 /* ===== فيديو بضغطة ===== */
 .ratio{position:relative;background:#000;overflow:hidden;cursor:pointer;border-radius:inherit}
